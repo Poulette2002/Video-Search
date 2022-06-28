@@ -1,10 +1,11 @@
 import http.server
 import socketserver
 from os import path
+import cgi, cgitb
 
 my_host_name = 'localhost'
 my_port = 8080
-my_html_folder_path = '/Users/alexiaharivel/Documents/Klagenfurt/Video-Search/ui'
+my_html_folder_path = '/Users/alexiaharivel/Documents/Klagenfurt/Video-Search/web'
 
 my_home_page_file_path = 'index.html'
 
@@ -40,3 +41,8 @@ my_handler = MyHttpRequestHandler
 with socketserver.TCPServer(("", my_port), my_handler) as httpd:
     print("Http Server Serving at port", my_port)
     httpd.serve_forever()
+
+    cgitb.enable() # for debugging
+    form = cgi.FieldStorage()
+    name = form.getvalue('name')
+    print("Name of the user is:",name)

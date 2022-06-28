@@ -13,10 +13,18 @@
 <body>
     <h1>Coucou</h1>
 
-<video width="320" height="240" controls autoplay>
+
+<form action="/server.py" method="get">
+        <input type="text" name="name" value="Votre nom" >
+        <input type="button" name="send" value="Submit">
+</form> 
+
+ <video width="320" height="240" controls autoplay>
     <source src="00001.mp4" type="video/mp4">
     Votre explorateur ne supporte pas la balise video.
 </video> 
+
+
 
 
 </body>
