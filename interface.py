@@ -21,7 +21,6 @@ root = Tk()
 root.title("VIDEO SEARCH CONTENT")
 root.geometry("750x500")
 root.minsize(650,420)
-#fenetre.iconphoto(False, PhotoImage( file = r"C:\Mpmp\SCAN\logo.png"))
 s = Style()
 s.configure('My.TFrame', background='#a6cf65')
 
@@ -33,15 +32,12 @@ main_frame.pack(fill=BOTH, expand = 1)
 canvas = Canvas(main_frame)
 canvas_left = Canvas(main_frame)
 
-#canvas.grid(row=0, column=0, sticky="nsew")
 
 #scrollbar
 scrollbar_x = Scrollbar(main_frame, orient=HORIZONTAL, command=canvas.xview)
-#scrollbar_x.grid(row=1, column=0, sticky="ew")
 scrollbar_x.pack(side=BOTTOM, fill=X)
 
 scrollbar_y = Scrollbar(main_frame, orient=VERTICAL, command=canvas.yview)
-#scrollbar_y.grid(row=0, column=1, sticky="ns")
 scrollbar_y.pack(side=RIGHT, fill=Y)
 
 #configure the canvas
@@ -49,8 +45,6 @@ canvas.configure(xscrollcommand=scrollbar_x.set, yscrollcommand=scrollbar_y.set)
 canvas.bind("<Configure>", lambda e : canvas.configure(scrollregion = canvas.bbox("all")) )
 canvas_left.pack(side = LEFT, fill = Y)
 canvas.pack(side = RIGHT, fill = BOTH, expand = 1)
-
-
 
 #frame inside the canvas
 frame_left = Frame(canvas_left)

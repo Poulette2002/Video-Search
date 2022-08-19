@@ -30,7 +30,7 @@ sunset. In this usage situation the person to enter the keywords cat and
 sun. The model will return the scenes containing this information and
 the link to the original video.
 
-### Key words 
+### Key words
 
 YOLO, AlexNet, Inception, shot detection, keyframe extraction
 
@@ -43,7 +43,7 @@ you can see our process for the first video with each step:
 
 <https://drive.google.com/drive/folders/13dLyIqrqQul0PRI5OHjJ4nDpeSrzBlf9?usp=sharing>
 
-#### Notebook: 
+#### Notebook:
 
 • shot_detection.ipynb (requirement distances.npy)
 
@@ -51,12 +51,18 @@ you can see our process for the first video with each step:
 
 • Frame_Extraction_and_Cluster_Analysis.ipynb
 
-#### File: 
+#### File:
 
 • distances.npy (used in the notebook shot_detection.ipynb)
 
 • imagenet_classes.txt (used in the notebook
 object_concept_extraction.ipynb for AlexNet)  
+
+#### Python files:
+
+• createdb.py : create and fill the mongo database thanks to json files
+
+• interface.py : lunch the interface
 
 ### Protocol
 
@@ -99,7 +105,7 @@ input and does a cluster analysis and gives a unique image per cluster
 as an output. We used the agglomerative hierarchical clustering with a
 range between 1 and 10 clusters per shot.
 
-#### • Concept/object detection 
+#### • Concept/object detection
 
 AlexNet, Inception, YOLO : For each key frame we applied YOLO, AlexNet
 and Inception and kept the predictions with over 66% accuracy.
@@ -119,32 +125,37 @@ We decided to use the Tkinter library to create the interface. To see
 the interface, you must run the file interface.py. You need the
 llibrairies tkinter, tkVideoplayer and tkvideo.
 
+![Results for the search "tie" &
+"chair"](images/Capture%20d%E2%80%99e%CC%81cran%202022-08-19%20a%CC%80%2021.47.18.png)
+
 #### • How does the interface work?
 
 When you lunch the interface.py script, a tkinter window opens. You can
 add as many keywords you want thanks to the button Add a Keyword (it
-creates a new entry box). If too many entry box, are add, it is not a
-problem. Once you enter all the keywords you want (one per entry box),
+creates a new entry box). If too many entry box, are added, it is not a
+problem. Once you entered all the keywords you want (one per entry box),
 you can use the Search button. It will show you all the shots where all
 the keywords you entered were predicted by our models. When you click on
 a picture, the video of the shot is played on the right corner of the
-interface.
+interface. The video number and the tmecodes are printed and a link to
+submit the frame to the API is printed in the terminal.
 
 #### How to run ?
 
 -   **Download the files**
 
-    Inside a folder DB (that the path need to be change in line 7 of the
-    file created.py), please download the videos and folders with the
-    same names :
+    Inside a folder (that the path need to be change in line 7 of the
+    file createdb.py), please download :
 
     -   Inside a folder video : all the 100 whole videos
 
-    -   Inside a folder video_split : all the 100 folder
-        video_split_000XX with the split videos
-
     -   Inside a folder keyframe : all the 100 folder video_split_000XX
-        with the keyframes for every split video
+        with the keyframes for every split video (dowload and unzip the
+        file keyframe.zip frome the google drive)
+
+    -   the folder json
+
+    -   the file time.json
 
 -   **Fill the data base**
 
