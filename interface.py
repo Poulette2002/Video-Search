@@ -1,28 +1,18 @@
 from importlib.resources import path
 from tkinter import *
 from tkinter.ttk import *
-#from rempli_matrice import *
-import datetime
-import tkinter.filedialog
-import tkinter.messagebox
-import math
 
+import math
 from matplotlib.pyplot import fill
 from matplotlib.transforms import Bbox
-from tkvideo import tkvideo
-import os
+
 from tkVideoPlayer import TkinterVideo
+
 from PIL import ImageTk
 from PIL import Image
-#from ttkwidgets.autocomplete import AutocompleteEntry
 
-import pymongo
 from pymongo import MongoClient 
-import os
 
-import torch
-
-import time
 import threading
 
 
@@ -70,34 +60,7 @@ frame_right = Frame(canvas)
 canvas_left.create_window((0,0), width = 350, window=frame_left, anchor = "nw")
 canvas.create_window((350,0), window=frame_right, anchor="nw")
 
-
-
-
-#frame.columnconfigure(0,weight = 432)
-#frame.rowconfigure(0,weight = 270 )
-
-
-
-#label1 = Label(frame, text="SCAN",background='#a6cf65')
-#label1.grid(row = 0, column = 1,sticky = W, pady = 8)
-
-#video = Label(frame)
-#video.pack()
-
-#player = tkvideo("/Users/alexiaharivel/Documents/Klagenfurt/Video-Search/web/00001.mp4", video, loop = 1, size = (700, 500))
-#player.play()
-'''
-videoplayer = TkinterVideo(master=fenetre, scaled=True)
-print(os.path.exists("/Users/alexiaharivel/Documents/Klagenfurt/Video-Search/web/00001.mp4"))
-videoplayer.load(pat)
-videoplayer.pack(expand=True, fill="both")
-print(os.path.exists("/Users/alexiaharivel/Documents/Klagenfurt/Video-Search/web/00001.mp4"))
-
-videoplayer.play() # play the video '''
-
-
-# cadre video
-
+#cadre video
 im = Image.open("Frame.png")
 im1 = im.resize( (350, 1) )
 img1 = ImageTk.PhotoImage(im1)
@@ -111,26 +74,16 @@ panel2 = Label(frame_left, image = img2)
 panel2.image = img2 # keep a reference!
 panel2.grid(row = 1 , column =  1, pady = 2)
 
-#autocompleted test
-countries = [
-        'Antigua and Barbuda', 'Bahamas','Barbados','Belize', 'Canada',
-        'Costa Rica ', 'Cuba', 'Dominica', 'Dominican Republic', 'El Salvador ',
-        'Grenada', 'Guatemala ', 'Haiti', 'Honduras ', 'Jamaica', 'Mexico',
-        'Nicaragua', 'Saint Kitts and Nevis', 'Panama ', 'Saint Lucia', 
-        'Saint Vincent and the Grenadines', 'Trinidad and Tobago', 'United States of America'
-        ]
-
-
 #left frame
 label_keyword = Label(frame_left, text="Keyword : ")
 label_keyword.grid(row = 2, column = 0,sticky = "ew", pady = 2)
 
 entry_keyword = Entry(frame_left)
-#entry_keyword = AutocompleteEntry(    frame_left,  completevalues=countries )
 entry_keyword.grid(row = 3, column = 0, sticky = "ew", pady = 2)
 
 list_entry_keyword = [entry_keyword]
 
+#add keyword
 def add_keyword():
     print("oui")
     i = len(list_entry_keyword)
@@ -148,13 +101,7 @@ def add_keyword():
 button1 = Button(frame_left,text = 'Add a Keyword',command = add_keyword)
 button1.grid(row = 4, column = 0, sticky = "ew", pady = 2)
 
-
-
-
-
-
-
-
+#play the video when you click on it
 def play_video(event, pat, num, beg, end, sc):
         i = len(list_entry_keyword)
         for label in frame_left.grid_slaves():
@@ -209,10 +156,7 @@ path = "/Users/alexiaharivel/Desktop/DB"
 client = MongoClient('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0')
 
 db = client.bdd
-video = db.video
 scene = db.scene
-
-
 
 
 def search() :
@@ -258,7 +202,6 @@ def search() :
         beg = list_scene_beg[i]
         end = list_scene_end[i]
         sc = list_num_scene[i]
-        #print(pat)
         panel.bind("<Button 1>",lambda event, p = pat, n = num, b = beg, e = end, s = sc: play_video(event, p, n, b, e, s))
 
 
@@ -266,9 +209,5 @@ def search() :
 button2 = Button(frame_left,text = 'Search',command = search)
 button2.grid(row = 5, column = 0, sticky = "ew", pady = 2)
 
-import sys
-print(sys.executable)
-
-#frame.pack(fill = BOTH, expand=1)
 root.mainloop()
 

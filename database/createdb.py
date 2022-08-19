@@ -9,12 +9,11 @@ path = "/Users/alexiaharivel/Desktop/DB"
 client = MongoClient('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.0')
 
 db = client.bdd
-
 scene = db.scene
 
 
 new_path = path + "/video/"
-print(new_path)
+
 
 def name_scene_to_num_scene(l) : 
     n = len(l)
