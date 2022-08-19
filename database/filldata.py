@@ -5,6 +5,32 @@ import os
 import json
 
 import threading
+
+path_keyframe = '/Users/alexiaharivel/Desktop/DB/keyframe/'
+
+"""
+k = 0
+for dir in os.listdir(path_keyframe) : 
+    
+    
+    for subdir in os.listdir(path_keyframe  + "/" + dir) :
+
+        nb_keyframe = len(os.listdir(path_keyframe + dir + "/" + subdir))
+        lst_keyframe = sorted(os.listdir(path_keyframe  + dir + "/" + subdir))
+        path_photo = path_keyframe + dir + "/" + subdir + "/" + sorted(os.listdir(path_keyframe  + dir + "/" + subdir))[nb_keyframe//2]
+        for i in range(0, nb_keyframe) : 
+            if i != nb_keyframe//2 : 
+                print("")
+                os.remove(path_keyframe + dir + "/" + subdir + "/" + lst_keyframe[i])
+            else :
+                k = k + 1
+
+print(k)
+
+        
+
+"""
+
 """
 def hello():
     print("hello, world")
@@ -63,7 +89,7 @@ for file in os.listdir(path) :
 
 
 """
-
+"""
 def name_scene_to_num_scene(l) : 
     n = len(l)
     if n == 11 :
@@ -89,7 +115,7 @@ for i in range(1, 101) :
         l.append("000"+str(i))
     else :
         l.append("00"+str(i))
-print(l)
+print(l)"""
 """
     dct_yolo = {}
     for path_video in tqdm(os.listdir()):
@@ -114,6 +140,7 @@ print(l)
                                 dct_yolo[path_video][path_scene][name]+=1
                         idx = idx + 1
     save_dct_as_json(dct_yolo,"yolo", path_json)
+"""
 """
 dct = {}
 
@@ -231,3 +258,4 @@ with open("time.json", 'w') as fp:
         json.dump(dct, fp)
 #print(dix)
 #print(len(dix))
+"""
